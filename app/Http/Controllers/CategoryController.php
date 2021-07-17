@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with(['articles'])->get();
         return view('categories.index', compact('categories'));
     }
 
@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::findOrFail($id);
+        $category = Category::with(['articles'])->findOrFail($id);
         return view('categories.detail', compact('category'));
     }
 

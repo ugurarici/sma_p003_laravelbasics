@@ -11,7 +11,7 @@ class ArticleController extends Controller
     public function index()
     {
         // Article listeleme
-        $articles = Article::latest()->get();
+        $articles = Article::with(['category'])->latest()->get();
         return view("articles.index", compact('articles'));
     }
 
@@ -23,7 +23,7 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::with(['category'])->findOrFail($id);
         return view('articles.detail', compact('article'));
     }
 
