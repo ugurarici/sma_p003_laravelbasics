@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::get('articles/new', [ArticleController::class, 'create']);
 Route::get('articles/{id}', [ArticleController::class, 'show']);
 
 Route::post('articles', [ArticleController::class, 'store']);
+
+Route::resource('categories', CategoryController::class);
